@@ -390,29 +390,6 @@ sales_filter<-function(task,min.obs=21,nfolds.cv.glmnet=5,forecast_method="lasso
   return(result)
 }
 
-
-
-# end_time<-Sys.time()
-# paste('data prepear for',(end_data_prepear-start_time))
-# paste('lasso modelind',(end_lasso_modeling-end_data_prepear))
-# paste('feature extractions',(end_feature_extract-end_lasso_modeling))
-# paste('lm_modeling',(end_lm_modelling-end_feature_extract))
-# paste('outliers_detection', (end_outlier_detection-end_feature_extract))
-# paste('small data',(end_small_data-start_small))
-# paste('preparation to forecast', (end_data_prepear_forecast-end_small_data))
-# paste('forecast',(end_forecast-end_data_prepear_forecast))
-# paste('all time',(end_time-start_time))
-# 
-# 
-# end_data_prepear_forecast
-
-getwd()
-saveRDS(filter,'banana_filtered_sales')
-
-r<-as.data.table(result)
-r<-r[list(a=length(kolvo_F)),by=c('lagerID','filid')] 
-  r<-result[result$date>='2019-04-15',]
-  
   
   start_time<-Sys.time()
   filter<-sales_filter(task = task,forecast_method = "lasso")
